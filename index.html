@@ -5,29 +5,46 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta
       name="description"
-      content="Alcode finds relevant leads for cold email outreach."
+      content="Proactive lead research and agile prospect list building for focused outreach."
     >
-
-    <title>Alcode — Leads for cold email</title>
+    <meta name="theme-color" content="#f5f7f2">
+    <title>Alcode | Proactive lead research</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=DM+Serif+Display&display=swap"
+      rel="stylesheet"
+    >
     <style>
       :root {
         color-scheme: light;
-        font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-        color: #202a35;
-        background: #fff;
+        font-family: "DM Sans", sans-serif;
+        color: #1d2b28;
+        background: #f5f7f2;
         font-synthesis: none;
         text-rendering: optimizeLegibility;
         -webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing: grayscale;
+        --ink: #1d2b28;
+        --muted: #5d6b66;
+        --paper: #f5f7f2;
+        --line: #dce3dc;
+        --green: #1a5b4b;
+        --green-dark: #143f36;
+        --coral: #d86648;
+        --white: #fff;
       }
 
       * {
         box-sizing: border-box;
       }
 
+      html {
+        scroll-behavior: smooth;
+      }
+
       body {
-        margin: 0;
         min-width: 320px;
+        margin: 0;
       }
 
       a {
@@ -35,227 +52,742 @@
       }
 
       .page {
-        width: min(100% - 48px, 1000px);
+        width: min(100% - 64px, 1120px);
         margin: 0 auto;
       }
 
-      header {
-        height: 78px;
+      .site-header {
+        min-height: 78px;
         display: flex;
         align-items: center;
         justify-content: space-between;
-        border-bottom: 1px solid #e9edf1;
+        border-bottom: 1px solid var(--line);
       }
 
       .wordmark {
-        color: #172b4d;
-        font-size: 20px;
+        color: var(--green-dark);
+        font-size: 22px;
         font-weight: 700;
-        letter-spacing: -0.7px;
         text-decoration: none;
       }
 
-      nav a {
-        color: #526171;
+      .wordmark span {
+        color: var(--coral);
+      }
+
+      .nav-links {
+        display: flex;
+        align-items: center;
+        gap: 30px;
         font-size: 14px;
+        font-weight: 600;
+      }
+
+      .nav-links a {
         text-decoration: none;
       }
 
-      nav a:hover,
-      .text-link:hover {
-        color: #155eef;
+      .nav-links a:hover,
+      .inline-link:hover {
+        color: var(--coral);
       }
 
-      main {
-        padding: 96px 0 88px;
+      .nav-cta {
+        padding: 11px 16px;
+        border: 1px solid var(--green);
+        border-radius: 3px;
+        color: var(--green);
+      }
+
+      .hero {
+        padding: 88px 0 86px;
+        animation: arrive 600ms ease-out both;
       }
 
       .eyebrow {
-        margin: 0 0 20px;
-        color: #155eef;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin: 0 0 24px;
+        color: var(--green);
         font-size: 12px;
         font-weight: 700;
-        letter-spacing: 1.5px;
+        letter-spacing: 1.4px;
         text-transform: uppercase;
       }
 
+      .eyebrow::before {
+        width: 24px;
+        height: 2px;
+        background: var(--coral);
+        content: "";
+      }
+
+      h1,
+      h2,
+      h3,
+      p {
+        margin-top: 0;
+      }
+
       h1 {
-        max-width: 720px;
-        margin: 0;
-        color: #172b4d;
-        font-size: clamp(42px, 7vw, 68px);
-        font-weight: 650;
-        letter-spacing: -3.5px;
+        max-width: 850px;
+        margin-bottom: 24px;
+        color: var(--green-dark);
+        font-family: "DM Serif Display", Georgia, serif;
+        font-size: 68px;
+        font-weight: 400;
         line-height: 1.06;
       }
 
-      .intro {
-        max-width: 560px;
-        margin: 24px 0 30px;
-        color: #526171;
+      .hero-copy {
+        max-width: 650px;
+        margin-bottom: 30px;
+        color: var(--muted);
         font-size: 18px;
         line-height: 1.7;
       }
 
-      .text-link {
+      .hero-actions {
+        display: flex;
+        align-items: center;
+        gap: 24px;
+      }
+
+      .button {
+        min-height: 48px;
         display: inline-flex;
         align-items: center;
-        gap: 8px;
-        color: #155eef;
-        font-size: 15px;
-        font-weight: 600;
+        justify-content: center;
+        padding: 0 20px;
+        border: 1px solid var(--green);
+        border-radius: 3px;
+        background: var(--green);
+        color: var(--white);
+        font: inherit;
+        font-size: 14px;
+        font-weight: 700;
+        text-decoration: none;
+        cursor: pointer;
+        transition: background 160ms ease, transform 160ms ease;
+      }
+
+      .button:hover {
+        transform: translateY(-2px);
+        background: var(--green-dark);
+      }
+
+      .inline-link {
+        color: var(--green);
+        font-size: 14px;
+        font-weight: 700;
         text-decoration: none;
       }
 
-      .text-link span {
-        font-size: 19px;
-        transition: transform 160ms ease;
+      .intro-band {
+        width: 100%;
+        background: #e9eee7;
       }
 
-      .text-link:hover span {
-        transform: translateX(3px);
+      .intro-inner {
+        display: grid;
+        grid-template-columns: minmax(210px, 0.8fr) 1.7fr;
+        gap: 68px;
+        align-items: start;
+        padding-top: 48px;
+        padding-bottom: 48px;
       }
 
-      .divider {
-        height: 1px;
-        background: #e9edf1;
-      }
-
-      section {
-        padding: 44px 0;
+      .section-label {
+        margin: 5px 0 0;
+        color: var(--green);
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: 1.2px;
+        text-transform: uppercase;
       }
 
       h2 {
-        margin: 0 0 12px;
-        color: #172b4d;
-        font-size: 22px;
-        font-weight: 650;
-        letter-spacing: -0.6px;
+        margin-bottom: 14px;
+        color: var(--green-dark);
+        font-family: "DM Serif Display", Georgia, serif;
+        font-size: 36px;
+        font-weight: 400;
+        line-height: 1.18;
       }
 
-      .section-intro {
-        max-width: 540px;
-        margin: 0;
-        color: #667482;
+      .section-copy {
+        max-width: 640px;
+        margin-bottom: 0;
+        color: var(--muted);
+        font-size: 16px;
+        line-height: 1.75;
+      }
+
+      .approach {
+        padding-top: 82px;
+        padding-bottom: 88px;
+      }
+
+      .approach-heading {
+        max-width: 650px;
+        margin-bottom: 38px;
+      }
+
+      .approach-heading .eyebrow {
+        margin-bottom: 18px;
+      }
+
+      .pricing-band {
+        background: #e9eee7;
+      }
+
+      .pricing-inner {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 64px;
+        align-items: center;
+        padding-top: 58px;
+        padding-bottom: 58px;
+      }
+
+      .pricing-inner .eyebrow {
+        margin-bottom: 18px;
+      }
+
+      .pricing-details {
+        padding-left: 24px;
+        border-left: 2px solid var(--coral);
+      }
+
+      .pricing-details p {
+        margin-bottom: 18px;
+        color: var(--muted);
         font-size: 15px;
         line-height: 1.7;
       }
 
-      .services {
+      .terms {
+        padding-top: 76px;
+        padding-bottom: 76px;
+      }
+
+      .terms-layout {
         display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 32px;
-        margin-top: 32px;
+        grid-template-columns: 0.75fr 1.25fr;
+        gap: 64px;
       }
 
-      .service {
-        padding-top: 18px;
-        border-top: 2px solid #e9edf1;
+      .terms-heading .eyebrow {
+        margin-bottom: 18px;
       }
 
-      .service h3 {
-        margin: 0 0 8px;
-        color: #26384a;
-        font-size: 15px;
-        font-weight: 650;
+      .terms-heading h2 {
+        margin-bottom: 12px;
       }
 
-      .service p {
-        margin: 0;
-        color: #667482;
+      .terms-heading p:last-child {
+        margin-bottom: 0;
+        color: var(--muted);
         font-size: 14px;
-        line-height: 1.65;
+        line-height: 1.7;
       }
 
-      footer {
+      .terms-list {
+        margin: 0;
+      }
+
+      .term-item {
+        display: grid;
+        grid-template-columns: 150px 1fr;
+        gap: 20px;
+        padding: 18px 0;
+        border-top: 1px solid var(--line);
+      }
+
+      .term-item dt {
+        color: var(--green);
+        font-size: 14px;
+        font-weight: 700;
+      }
+
+      .term-item dd {
+        margin: 0;
+        color: var(--muted);
+        font-size: 14px;
+        line-height: 1.7;
+      }
+
+      .principles {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 34px;
+      }
+
+      .principle {
+        padding-top: 18px;
+        border-top: 2px solid var(--green);
+        animation: arrive 600ms ease-out both;
+      }
+
+      .principle:nth-child(2) {
+        animation-delay: 100ms;
+      }
+
+      .principle:nth-child(3) {
+        animation-delay: 200ms;
+      }
+
+      .principle-number {
+        display: block;
+        margin-bottom: 22px;
+        color: var(--coral);
+        font-size: 13px;
+        font-weight: 700;
+      }
+
+      .principle h3 {
+        margin-bottom: 10px;
+        color: var(--ink);
+        font-size: 18px;
+        font-weight: 700;
+      }
+
+      .principle p {
+        margin-bottom: 0;
+        color: var(--muted);
+        font-size: 14px;
+        line-height: 1.75;
+      }
+
+      .contact-band {
+        background: var(--green-dark);
+        color: var(--white);
+      }
+
+      .contact-inner {
+        display: grid;
+        grid-template-columns: 0.9fr 1.1fr;
+        gap: 70px;
+        padding-top: 72px;
+        padding-bottom: 72px;
+      }
+
+      .contact-copy .eyebrow {
+        color: #b6d2c5;
+      }
+
+      .contact-copy h2 {
+        color: var(--white);
+      }
+
+      .contact-copy p:not(.eyebrow) {
+        max-width: 390px;
+        margin-bottom: 20px;
+        color: #d3e0da;
+        font-size: 15px;
+        line-height: 1.7;
+      }
+
+      .contact-form {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 18px 16px;
+      }
+
+      .field {
+        display: grid;
+        gap: 7px;
+      }
+
+      .field-wide {
+        grid-column: 1 / -1;
+      }
+
+      .field label {
+        color: #e2ece7;
+        font-size: 13px;
+        font-weight: 600;
+      }
+
+      .field input,
+      .field textarea {
+        width: 100%;
+        min-height: 46px;
+        padding: 11px 12px;
+        border: 1px solid #6f9185;
+        border-radius: 2px;
+        outline: none;
+        background: #204c41;
+        color: var(--white);
+        font: inherit;
+        font-size: 14px;
+      }
+
+      .field input::placeholder,
+      .field textarea::placeholder {
+        color: #b8cbc2;
+      }
+
+      .field input:focus,
+      .field textarea:focus {
+        border-color: #ef9b7e;
+        box-shadow: 0 0 0 2px rgb(239 155 126 / 20%);
+      }
+
+      .field textarea {
+        min-height: 112px;
+        resize: vertical;
+      }
+
+      .contact-form .button {
+        justify-self: start;
+        border-color: var(--coral);
+        background: var(--coral);
+      }
+
+      .contact-form .button:hover {
+        background: #be5035;
+      }
+
+      .form-note {
+        align-self: center;
+        margin: 0;
+        color: #c4d6ce;
+        font-size: 12px;
+        line-height: 1.5;
+      }
+
+      .site-footer {
         display: flex;
-        align-items: center;
         justify-content: space-between;
         gap: 16px;
-        padding: 22px 0;
-        border-top: 1px solid #e9edf1;
-        color: #7a8793;
-        font-size: 13px;
+        padding-top: 22px;
+        padding-bottom: 22px;
+        color: var(--muted);
+        font-size: 12px;
       }
 
-      @media (max-width: 600px) {
+      .site-footer a {
+        text-decoration: none;
+      }
+
+      .site-footer a:hover {
+        color: var(--green);
+      }
+
+      @keyframes arrive {
+        from {
+          opacity: 0;
+          transform: translateY(12px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+          scroll-behavior: auto !important;
+          animation-duration: 0.01ms !important;
+          animation-iteration-count: 1 !important;
+          transition-duration: 0.01ms !important;
+        }
+      }
+
+      @media (max-width: 700px) {
         .page {
-          width: min(100% - 36px, 1000px);
+          width: min(100% - 40px, 1120px);
         }
 
-        main {
-          padding: 72px 0 64px;
+        .site-header {
+          min-height: 68px;
+        }
+
+        .nav-links {
+          gap: 16px;
+          font-size: 13px;
+        }
+
+        .nav-links a:first-child {
+          display: none;
+        }
+
+        .nav-links a:nth-child(2) {
+          display: none;
+        }
+
+        .nav-cta {
+          padding: 9px 11px;
+        }
+
+        .hero {
+          padding: 68px 0 64px;
         }
 
         h1 {
-          letter-spacing: -2.3px;
+          font-size: 48px;
         }
 
-        .intro {
+        .hero-copy {
           font-size: 16px;
         }
 
-        .services {
+        .intro-inner,
+        .contact-inner,
+        .pricing-inner,
+        .terms-layout {
+          grid-template-columns: 1fr;
+          gap: 20px;
+        }
+
+        .intro-inner {
+          padding-top: 36px;
+          padding-bottom: 38px;
+        }
+
+        .approach {
+          padding-top: 64px;
+          padding-bottom: 68px;
+        }
+
+        h2 {
+          font-size: 31px;
+        }
+
+        .principles {
           grid-template-columns: 1fr;
           gap: 24px;
         }
 
-        footer {
+        .principle-number {
+          margin-bottom: 12px;
+        }
+
+        .contact-inner {
+          gap: 34px;
+          padding-top: 54px;
+          padding-bottom: 54px;
+        }
+
+        .pricing-inner {
+          gap: 28px;
+          padding-top: 44px;
+          padding-bottom: 44px;
+        }
+
+        .terms {
+          padding-top: 56px;
+          padding-bottom: 58px;
+        }
+
+        .terms-layout {
+          gap: 28px;
+        }
+
+        .term-item {
+          grid-template-columns: 1fr;
+          gap: 7px;
+        }
+      }
+
+      @media (max-width: 460px) {
+        .page {
+          width: min(100% - 32px, 1120px);
+        }
+
+        .hero-actions {
           align-items: flex-start;
+          flex-direction: column;
+          gap: 18px;
+        }
+
+        .contact-form {
+          grid-template-columns: 1fr;
+        }
+
+        .field-wide {
+          grid-column: auto;
+        }
+
+        .form-note {
+          margin-top: -8px;
+        }
+
+        .site-footer {
           flex-direction: column;
         }
       }
     </style>
   </head>
   <body>
-    <div class="page">
-      <header>
-        <a class="wordmark" href="#" aria-label="Alcode home">alcode</a>
-        <nav aria-label="Main navigation">
-          <a href="#what-we-do">What we do</a>
-        </nav>
-      </header>
+    <header class="site-header page">
+      <a class="wordmark" href="#home" aria-label="Alcode home">alcode<span>.</span></a>
+      <nav class="nav-links" aria-label="Main navigation">
+        <a href="#approach">Our approach</a>
+        <a href="#pricing">Pricing</a>
+        <a class="nav-cta" href="#contact">Start a conversation</a>
+      </nav>
+    </header>
 
-      <main>
-        <p class="eyebrow">Lead research for cold email</p>
-        <h1>Find the right people to reach.</h1>
-        <p class="intro">
-          We find relevant leads for cold email outreach, helping you start
-          with a focused list of people who fit your target audience.
+    <main id="home">
+      <section class="hero page" aria-labelledby="hero-title">
+        <p class="eyebrow">Lead research, with momentum</p>
+        <h1 id="hero-title">Lead research that moves at your speed.</h1>
+        <p class="hero-copy">
+          Get a focused prospect list built around your goals. Alcode takes a
+          proactive approach to the research and stays agile as your priorities
+          evolve, so your next outreach campaign can move forward with clarity.
         </p>
-        <a class="text-link" href="#what-we-do">
-          How it works <span aria-hidden="true">→</span>
-        </a>
-      </main>
+        <div class="hero-actions">
+          <a class="button" href="#contact">Plan a project</a>
+          <a class="inline-link" href="#approach">See how we work <span aria-hidden="true">→</span></a>
+        </div>
+      </section>
 
-      <div class="divider" aria-hidden="true"></div>
+      <section class="intro-band" aria-labelledby="promise-title">
+        <div class="intro-inner page">
+          <p class="section-label">Proactive by nature</p>
+          <div>
+            <h2 id="promise-title">Better data. More relevant conversations.</h2>
+            <p class="section-copy">
+              We prioritize accurate, current consumer and business contact
+              data, checked against your target criteria. Proven sales
+              principles help shape a more relevant prospect list and give your
+              outreach a stronger chance to convert. We value our partners and
+              focus on supporting their long-term success, not just delivering
+              a one-off list. Results still depend on your offer, market,
+              timing, and messaging.
+            </p>
+          </div>
+        </div>
+      </section>
 
-      <section id="what-we-do" aria-labelledby="services-heading">
-        <h2 id="services-heading">Built around your needs and budget.</h2>
-        <p class="section-intro">
-          Deliverables and pricing are customized to your needs. Every project
-          is delivered on budget.
-        </p>
-        <div class="services">
-          <article class="service">
-            <h3>Define your audience</h3>
-            <p>Clarify the kinds of businesses and people you want to reach.</p>
+      <section class="approach page" id="approach" aria-labelledby="approach-title">
+        <div class="approach-heading">
+          <p class="eyebrow">A flexible process</p>
+          <h2 id="approach-title">Focused research. No unnecessary drag.</h2>
+          <p class="section-copy">
+            The scope fits your audience, timeline, and budget. We stay close to
+            the brief, adapt when priorities shift, and deliver a list your team
+            can put to work.
+          </p>
+        </div>
+        <div class="principles">
+          <article class="principle">
+            <span class="principle-number">01 / ALIGN</span>
+            <h3>Start with your target</h3>
+            <p>We clarify the companies, roles, and criteria that matter to your campaign.</p>
           </article>
-          <article class="service">
-            <h3>Find relevant leads</h3>
-            <p>Identify prospects that fit your audience and outreach goals.</p>
+          <article class="principle">
+            <span class="principle-number">02 / RESEARCH</span>
+            <h3>Move with initiative</h3>
+            <p>We research to your brief, flag questions early, and keep progress visible.</p>
           </article>
-          <article class="service">
-            <h3>Build your list</h3>
-            <p>Get a focused prospect list to use as the starting point for outreach.</p>
+          <article class="principle">
+            <span class="principle-number">03 / DELIVER</span>
+            <h3>Be ready for outreach</h3>
+            <p>You receive an organized prospect list, with scope shaped around your needs.</p>
           </article>
         </div>
       </section>
 
-      <footer>
-        <span>© <span id="year">2026</span> Alcode</span>
-        <span>Lead research for cold email</span>
-      </footer>
-    </div>
+      <section class="pricing-band" id="pricing" aria-labelledby="pricing-title">
+        <div class="pricing-inner page">
+          <div>
+            <p class="eyebrow">Pricing that fits the brief</p>
+            <h2 id="pricing-title">Custom scope. Clear quote.</h2>
+          </div>
+          <div class="pricing-details">
+            <p>
+              Every audience and project is different. Pricing is tailored to
+              your criteria, list size, research depth, and timeline. Share what
+              you need and we’ll respond as soon as possible, usually within
+              one business day, with a clear next step.
+            </p>
+            <a class="button" href="#contact">Request custom pricing</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="terms page" id="terms" aria-labelledby="terms-title">
+        <div class="terms-layout">
+          <div class="terms-heading">
+            <p class="eyebrow">Built on partnership</p>
+            <h2 id="terms-title">Your results matter to us.</h2>
+            <p>We value our partners and work proactively to support their long-term success. Project details are agreed clearly before work begins.</p>
+          </div>
+          <dl class="terms-list">
+            <div class="term-item">
+              <dt>Confidentiality</dt>
+              <dd>Client briefs, audience criteria, and campaign materials are treated as confidential and used only for the agreed work. We do not disclose them without your permission, except where required by law.</dd>
+            </div>
+            <div class="term-item">
+              <dt>Data and outcomes</dt>
+              <dd>We check data against your criteria and prioritize current, active contacts. Proven sales principles help shape focused lists that support stronger targeting and conversion potential.</dd>
+            </div>
+            <div class="term-item">
+              <dt>Communication</dt>
+              <dd>We aim to respond to inquiries as soon as possible, usually within one business day. We agree on project updates and notify you promptly if a timeline needs to change.</dd>
+            </div>
+            <div class="term-item">
+              <dt>Scope and pricing</dt>
+              <dd>Quotes are customized to the agreed audience, volume, research depth, and timing. Changes to the scope or price are discussed and approved before additional work starts.</dd>
+            </div>
+          </dl>
+        </div>
+      </section>
+
+      <section class="contact-band" id="contact" aria-labelledby="contact-title">
+        <div class="contact-inner page">
+          <div class="contact-copy">
+            <p class="eyebrow">Make your next move</p>
+            <h2 id="contact-title">Tell us who you want to reach.</h2>
+            <p>
+              Share a little about your audience and goals. We aim to reply as
+              soon as possible, usually within one business day.
+            </p>
+          </div>
+          <form class="contact-form" id="contact-form">
+            <div class="field">
+              <label for="contact-name">Your name</label>
+              <input id="contact-name" name="name" autocomplete="name" placeholder="Name" required>
+            </div>
+            <div class="field">
+              <label for="contact-email">Email address</label>
+              <input id="contact-email" name="email" type="email" autocomplete="email" placeholder="you@company.com" required>
+            </div>
+            <div class="field field-wide">
+              <label for="contact-message">What are you looking for?</label>
+              <textarea id="contact-message" name="message" placeholder="Tell us about your audience, goals, or timeline." required></textarea>
+            </div>
+            <button class="button" type="submit">Send inquiry <span aria-hidden="true">→</span></button>
+            <p class="form-note">Your email app will open with your inquiry ready to send.</p>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer page">
+      <span>© <span id="year">2026</span> Alcode</span>
+      <span>Proactive lead research. Agile delivery.</span>
+      <a href="terms.html">Terms &amp; Conditions</a>
+    </footer>
+
+    <script>
+      document.getElementById("year").textContent = new Date().getFullYear();
+      document.getElementById("contact-form").addEventListener("submit", (event) => {
+        event.preventDefault();
+        const formData = new FormData(event.currentTarget);
+        const subject = encodeURIComponent(`Alcode project inquiry from ${formData.get("name")}`);
+        const body = encodeURIComponent(
+          `Name: ${formData.get("name")}\nEmail: ${formData.get("email")}\n\n${formData.get("message")}`
+        );
+        window.location.href = `mailto:algure.emart@gmail.com?subject=${subject}&body=${body}`;
+      });
+    </script>
   </body>
 </html>
